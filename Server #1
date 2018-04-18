@@ -1,0 +1,96 @@
+import pymysql
+
+# Menghubungkan ke database
+connect = pymysql.connect(host='localhost', user='root', password='', db='db_telkomuniversity')
+a = connect.cursor()
+
+# Searcher
+# Seleksi untuk sintak sql yang akan digunakan
+select = ""
+searchBy = ""
+command =   raw_input("command  : ")
+
+nim =       raw_input("NIM      : ")
+if (nim == 'y'):
+    select += " nim,"
+elif (nim == 'n'):
+    select += ""
+else :
+    searchBy += " nim = " + nim + " and"
+
+nama =      raw_input("Nama     : " )
+if (nama == 'y'):
+    select += " nama,"
+elif (nama == 'n'):
+    select += ""
+else :
+    searchBy += " nama = " + nama + " and"
+
+kelas =     raw_input("kelas    : " )
+if (kelas == 'y'):
+    select += " kelas,"
+elif (kelas == 'n'):
+    select += ""
+else :
+    searchBy += " kelas = " + kelas + " and"
+
+fakultas =  raw_input("fakultas : " )
+if (fakultas == 'y'):
+    select += " fakultas,"
+elif (fakultas == 'n'):
+    select += ""
+else :
+    searchBy += " fakultas = " + fakultas + " and"
+
+prodi =     raw_input("prodi    : " )
+if (prodi == 'y'):
+    select += " program_studi,"
+elif (prodi == 'n'):
+    select += ""
+else :
+    searchBy += " program_studi = " + prodi + " and"
+
+angkatan =  raw_input("angkatan : " )
+if (angkatan == ' angkatan,'):
+    select += " nama,"
+elif (angkatan == 'n'):
+    select += ""
+else :
+    searchBy += " angkatan = " + angkatan + " and"
+
+ip =        raw_input("ip       : " )
+if (ip == 'y'):
+    select += " ip,"
+elif (ip == 'n'):
+    select += ""
+else :
+    searchBy += " ip = " + ip + " and"
+
+# eliminasi karakter yang tidak dibutuhkan
+select = select[:select.__len__() - 1]
+if (searchBy.__len__() > 0):
+    searchBy = searchBy[:searchBy.__len__() - 4]
+else :
+    searchBy = " 1"
+
+# merangkai syntax
+syntax = "SELECT" + select + " FROM db_mahasiswa WHERE" + searchBy + ";"
+
+# eksekusi sintak
+a.execute(syntax)
+countrow = a.execute(syntax)
+
+
+data = a.fetchall()
+if (command == "read"):
+    # Menampilkan hasil outputan
+    for i in range(0,countrow):
+        print data[i]
+elif (command == "take"):
+    for i in range(0,countrow):
+        print data[i]
+
+    file = open("file download.txt", 'w')
+    for obj in range(0,countrow):
+        line = str(data[i]) + "\n"
+        file.write(line)
