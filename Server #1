@@ -16,6 +16,7 @@ if (nim == 'y'):
 elif (nim == 'n'):
     select += ""
 else :
+    select += " nim,"
     searchBy += " nim = " + nim + " and"
 
 nama =      raw_input("Nama     : " )
@@ -24,6 +25,7 @@ if (nama == 'y'):
 elif (nama == 'n'):
     select += ""
 else :
+    select += " nama,"
     searchBy += " nama = " + nama + " and"
 
 kelas =     raw_input("kelas    : " )
@@ -32,6 +34,7 @@ if (kelas == 'y'):
 elif (kelas == 'n'):
     select += ""
 else :
+    select += " kelas,"
     searchBy += " kelas = " + kelas + " and"
 
 fakultas =  raw_input("fakultas : " )
@@ -40,6 +43,7 @@ if (fakultas == 'y'):
 elif (fakultas == 'n'):
     select += ""
 else :
+    select += " fakultas,"
     searchBy += " fakultas = " + fakultas + " and"
 
 prodi =     raw_input("prodi    : " )
@@ -48,6 +52,7 @@ if (prodi == 'y'):
 elif (prodi == 'n'):
     select += ""
 else :
+    select += " program_studi,"
     searchBy += " program_studi = " + prodi + " and"
 
 angkatan =  raw_input("angkatan : " )
@@ -56,6 +61,7 @@ if (angkatan == ' angkatan,'):
 elif (angkatan == 'n'):
     select += ""
 else :
+    select += " nama,"
     searchBy += " angkatan = " + angkatan + " and"
 
 ip =        raw_input("ip       : " )
@@ -64,6 +70,7 @@ if (ip == 'y'):
 elif (ip == 'n'):
     select += ""
 else :
+    select += " ip,"
     searchBy += " ip = " + ip + " and"
 
 # eliminasi karakter yang tidak dibutuhkan
